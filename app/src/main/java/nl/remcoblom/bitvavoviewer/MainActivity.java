@@ -1,6 +1,8 @@
 package nl.remcoblom.bitvavoviewer;
 
 import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,8 +10,18 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
+
+    private TextView helloWorldTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                calculate();
             }
         });
+
+        helloWorldTextView = findViewById(R.id.helloWorldTextView);
+        calculate();
     }
 
     @Override
@@ -48,5 +62,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void calculate() {
+        try {
+            InputStream inputStream = getBaseContext().getAssets().open("Bitvavo.properties");
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            Calculate calculate = new Calculate(properties);
+            ExecutorService service = Executors.newSingleThreadExecutor();
+            double result = service.submit(calculate).get();
+            System.out.println("Total: " + result);
+            helloWorldTextView.setText(String.valueOf(result));
+        } catch (IOException e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }
