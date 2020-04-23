@@ -1,28 +1,22 @@
 package nl.remcoblom.bitvavoviewer;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.Callable;
 
-public class Calculate implements Callable<Double> {
+public class AssetsInEURTask implements Callable<Map<Currency,Double>> {
 
     private Properties properties;
 
-    public Calculate(Properties properties) {
+    public AssetsInEURTask(Properties properties) {
         this.properties = properties;
     }
 
     @Override
-    public Double call() throws Exception {
-
+    public Map<Currency, Double> call() throws Exception {
         APIRequester apiRequester = APIRequester.getInstance(properties);
         Map<Currency, Asset> assets = apiRequester.getAvailableAssets();
         Map<Currency, Market> markets = apiRequester.getAvailableMarkets();
-
-        List<Double> assetsInEur = new ArrayList<>();
+        Map<Currency, Double> assetsInEUR = new HashMap<>();
         assets.forEach((k, v) -> {
             double assetInEur = 0;
             if (k != Currency.EUR) {
@@ -30,9 +24,8 @@ public class Calculate implements Callable<Double> {
             } else {
                 assetInEur = v.getAmount();
             }
-            System.out.println(k + ": " + assetInEur);
-            assetsInEur.add(assetInEur);
+            assetsInEUR.put(k, assetInEur);
         });
-        return assetsInEur.stream().mapToDouble(i -> i).sum();
+        return assetsInEUR;
     }
 }
