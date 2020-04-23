@@ -33,7 +33,7 @@ class APIRequester {
         return new JSONObject("{" +
                 keyAPIKey + ":" + valueAPIKey + "," +
                 keyAPISecret + ":" + valueAPISecret + "," +
-                "ACCESSWINDOW: 10000, " +
+                "ACCESSWINDOW: 50000, " +
                 "DEBUGGING: false }");
     }
 
@@ -49,7 +49,6 @@ class APIRequester {
     Map<Currency, Market> getAvailableMarkets() throws JSONException {
         JSONArray arrayResponse = bitvavo.tickerPrice(new JSONObject());
         Map<Currency, Market> availableMarkets = new HashMap<>();
-
         for (int i = 0; i < arrayResponse.length(); i++) {
             JSONObject jsonObject = arrayResponse.getJSONObject(i);
             Currency currency = Market.getBaseCurrencyFromMarketString(jsonObject.getString(KEY_MARKET));
