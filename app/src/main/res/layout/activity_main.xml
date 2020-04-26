@@ -11,7 +11,8 @@
     <com.google.android.material.appbar.AppBarLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:theme="@style/AppTheme.AppBarOverlay"
+            android:layout_gravity="top">
 
         <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -28,30 +29,31 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
-
 <!--    <include layout="@layout/content_main" android:id="@+id/include"/>-->
-
-<!--    <include layout="@layout/recycler_view" android:id="@+id/includeRecyclerView"/>-->
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/assetsRecyclerView"
-            android:scrollbars="vertical"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:showIn="@layout/activity_main"
+            tools:context=".MainActivity"
+            android:id="@+id/swipeContainer">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            app:srcCompat="@android:drawable/ic_dialog_email"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/assetsRecyclerView"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="bottom|end"-->
+<!--            android:layout_margin="@dimen/fab_margin"-->
+<!--            app:srcCompat="@android:drawable/ic_dialog_email"/>-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

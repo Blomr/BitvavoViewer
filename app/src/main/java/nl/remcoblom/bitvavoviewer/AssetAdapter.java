@@ -3,14 +3,15 @@ package nl.remcoblom.bitvavoviewer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Locale;
 import java.util.Map;
 
 public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHolder> {
@@ -52,7 +53,8 @@ public class AssetAdapter extends RecyclerView.Adapter<AssetAdapter.AssetViewHol
     public void onBindViewHolder(@NonNull AssetViewHolder holder, int position) {
         holder.currencySymbol.setText(currencies[position].name());
         holder.assetAmount.setText(String.valueOf(assets.get(currencies[position]).getAmount()));
-        holder.assetValueInEUR.setText(String.valueOf(assetsInEUR.get(currencies[position])));
+        NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("nl", "NL"));
+        holder.assetValueInEUR.setText(format.format(assetsInEUR.get(currencies[position])));
     }
 
     @Override

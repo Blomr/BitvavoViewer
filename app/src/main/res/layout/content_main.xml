@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,127 +8,15 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_main"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:id="@+id/swipeContainer">
 
-    <TextView
-            android:text="totalTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/totalTextView"/>
-    <TextView
-            android:text="assetTextView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/totalTextView"
-            android:id="@+id/assetTextView1"/>
-    <TextView
-            android:text="assetTextView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView2"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView1"/>
-    <TextView
-            android:text="assetTextView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView3"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView2"/>
-    <TextView
-            android:text="assetTextView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView4"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView3"/>
-    <TextView
-            android:text="assetTextView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView5"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView4"/>
-    <TextView
-            android:text="assetTextView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView6"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView5"/>
-    <TextView
-            android:text="assetTextView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView7"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView6"/>
-    <TextView
-            android:text="assetTextView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView8"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView7"/>
-    <TextView
-            android:text="assetTextView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView9"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView8"/>
-    <TextView
-            android:text="assetTextView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView10"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView9"/>
-    <TextView
-            android:text="assetTextView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView11"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView10"/>
-    <TextView
-            android:text="assetTextView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView12"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView11"/>
-    <TextView
-            android:text="assetTextView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView13"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView12"/>
-    <TextView
-            android:text="assetTextView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/assetTextView14"
-            app:layout_constraintBottom_toTopOf="@+id/assetTextView13"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/assetsRecyclerView"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
