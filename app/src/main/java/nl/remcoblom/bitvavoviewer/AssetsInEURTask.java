@@ -1,21 +1,19 @@
 package nl.remcoblom.bitvavoviewer;
 
+import org.json.JSONException;
+
 import java.util.*;
-import java.util.concurrent.Callable;
 
-public class AssetsInEURTask implements Callable<Map<Currency,Double>> {
+public class AssetsInEURTask extends APIRequesterTask<Map<Currency, Double>> {
 
-    private Properties properties;
-
-    public AssetsInEURTask(Properties properties) {
-        this.properties = properties;
+    public AssetsInEURTask(Properties properties) throws JSONException {
+        super(properties);
     }
 
     @Override
     public Map<Currency, Double> call() throws Exception {
-        APIRequester apiRequester = APIRequester.getInstance(properties);
-        Map<Currency, Asset> assets = apiRequester.getAvailableAssets();
-        Map<Currency, Market> markets = apiRequester.getAvailableMarkets();
+        Map<Currency, Asset> assets = getAPIRequester().getAvailableAssets();
+        Map<Currency, Market> markets = getAPIRequester().getAvailableMarkets();
         Map<Currency, Double> assetsInEUR = new HashMap<>();
         assets.forEach((k, v) -> {
             double assetInEur = 0;
