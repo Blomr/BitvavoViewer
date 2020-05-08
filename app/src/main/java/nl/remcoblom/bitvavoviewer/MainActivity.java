@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new AssetAdapter(assets, assetsInEUR);
+        adapter = new AssetAdapter(assets, assetsInEUR, markets);
         recyclerView.setAdapter(adapter);
 
         setToolbarText(getTotalValueAssetsInEUR());
@@ -97,6 +97,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_refresh) {
+            try {
+                refreshDataFromBitvavo();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         return super.onOptionsItemSelected(item);
