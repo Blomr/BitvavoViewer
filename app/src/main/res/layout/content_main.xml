@@ -9,13 +9,13 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_main"
         tools:context=".MainActivity"
-        android:id="@+id/swipeContainer">
+        android:id="@+id/swipeContainer2">
 
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/assetsRecyclerView"
-                android:scrollbars="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/assetsRecyclerView"-->
+<!--                android:scrollbars="vertical"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"/>-->
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
